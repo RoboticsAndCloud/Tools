@@ -51,7 +51,7 @@ def init_log(log_path, level=logging.INFO, when="D", backup=7,
     handler.setFormatter(formatter)
     logger.addHandler(handler)
 
-    f_handler = logging.handlers.TimedRotatingFileHandler(log_path + "log.error", when=when, backupCount=backup)
+    f_handler = logging.handlers.TimedRotatingFileHandler(log_path + ".log.error", when=when, backupCount=backup)
     f_handler.setLevel(logging.ERROR)
     f_handler.setFormatter(formatter)
     logger.addHandler(f_handler)
