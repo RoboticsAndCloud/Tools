@@ -11,7 +11,19 @@ Date: 2020/05/25 17:23:06
 
 import socket
 import subprocess
+import os
 
+def isRunning(process_name):
+    try:
+        process = len(os.popen(
+            'ps aux | grep "' + process_name + '" | grep -v grep | grep -v tail | grep -v keepH5ssAlive').readlines())
+        if process >= 1:
+            return True
+        else:
+            return False
+    except:
+        print("Check process ERROR!!!")
+        return False
 
 def get_process_id(name):
     child = subprocess.Popen(["pgrep", "-f", name], stdout=subprocess.PIPE, shell=False)
