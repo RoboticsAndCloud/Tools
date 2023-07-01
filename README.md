@@ -1,2 +1,2 @@
 # Tools
-Tools lib
+This project includes some tools used for programming in daily life, shell scripts, simple client/server files...
