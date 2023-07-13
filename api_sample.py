@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 """
-猎鹰 api-service 模块 api 接口业务监控
+api-service 模块 
 """
 
 import logging
@@ -155,7 +155,7 @@ def push_sla_data(item, status):
     if status == 1:
         pv_lost = 1
 
-    url = 'http://api.tsdb.noah.xx.com/data/tsdb?aggr=true'
+    url = 'http://xxx.com/data/tsdb?aggr=true'
     data = {
         "data": [
             {
@@ -189,7 +189,7 @@ def push_sla_data(item, status):
 
 def status_domainListWithProduct():
     """
-    domainListWithProduct接口，获取产品线域名列表接口
+    domainListWithProduct接口
     """
     global logger
     url = 'http://%s/api/v1/domain/domainListWithProduct' % (HOST)
@@ -234,7 +234,7 @@ def status_domainListWithProduct():
 
 def status_idcEvents():
     """
-    idcEvents接口，获取IDC故障列表接口
+    idcEvents
     """
     global logger
     url = 'http://%s/api/v1/events/idcEvents' % (HOST)
@@ -278,7 +278,7 @@ def status_idcEvents():
 
 def status_provinceEvents():
     """
-    provinceEvents接口，获取省份运营商故障列表接口
+    provinceEvents
     """
     global logger
     url = 'http://%s/api/v1/events/provinceEvents' % (HOST)
@@ -322,7 +322,7 @@ def status_provinceEvents():
 
 def status_vipEvents():
     """
-    vipEvents 接口，获取vip故障列表接口
+    vipEvents
     """
     global logger
     url = 'http://%s/api/v1/events/vipEvents' % (HOST)
@@ -366,7 +366,7 @@ def status_vipEvents():
 
 def status_dnsEvents():
     """
-        dnsEvents 接口，获取DNS劫持故障列表接口
+        dnsEvents 
     """
     global logger
     url = 'http://%s/api/v1/events/dnsEvents' % (HOST)
@@ -410,7 +410,7 @@ def status_dnsEvents():
 
 def status_ispAndZoneIdcSet():
     """
-    ispAndZoneIdcSet接口，获取机房列表接口
+    ispAndZoneIdcSet
     """
     global logger
     url = 'http://%s/api/v1/idc/ispAndZoneIdcSet' % (HOST)
@@ -455,7 +455,7 @@ def status_ispAndZoneIdcSet():
 
 def status_thirdPartyTaskWithCategory():
     """
-    thirdPartyTaskWithCategory接口，获取第三方监测任务列表接口
+    thirdPartyTaskWithCategory
     """
     global logger
     url = 'http://%s/api/v1/thirdParty/thirdPartyTaskWithCategory' % (HOST)
@@ -500,7 +500,7 @@ def status_thirdPartyTaskWithCategory():
 
 def status_thirdPartyMapStatus():
     """
-    thirdPartyMapStatus，获取第三方监控地图数据
+    thirdParty
     """
     global logger
     url = 'http://%s/api/v1/thirdPartyMapStatus' % (HOST)
@@ -546,9 +546,9 @@ def status_thirdPartyMapStatus():
             handle_result(argus_item, 1)
             return
 
-        # 地图数据为空
+        # 数据为空
         data = result_obj['result']
-        # 电信连通性数据
+        # 
         isp_data = data['CHINANET']
         if isp_data is None:
             handle_result(argus_item, 1)
@@ -584,7 +584,7 @@ def status_thirdPartyMapStatus():
 
 def status_getIdcArea():
     """
-    getIdcArea接口，获取内网连通性IDC列表接口
+    getIdcArea
     """
     global logger
     url = 'http://%s/api/v1/innerIdc/getIdcArea?type=dest' % (HOST)
@@ -629,7 +629,7 @@ def status_getIdcArea():
 
 def status_getDomainStatus():
     """
-    getDomainStatus，获取首页域名地图数据
+    getDomainStatus
     """
     global logger
     url = 'http://%s/api/v1/domain/getDomainStatus' % (HOST)
@@ -663,9 +663,9 @@ def status_getDomainStatus():
             handle_result(argus_item, 1)
             return
 
-        # 地图数据为空
+        # 
         data = result_obj['result']
-        # 电信连通性数据
+        # 
         isp_data = data['CHINANET']
         if isp_data is None:
             handle_result(argus_item, 1)
@@ -682,7 +682,7 @@ def status_getDomainStatus():
 
         provinces_data = list(set(provinces_data))
         cnt = len(provinces_data)
-        # 如果地图所有省份数据都为空
+        # 
         if cnt <= 1 and provinces_data[0] == "":
             handle_result(argus_item, 1)
             return
@@ -698,14 +698,14 @@ def status_getDomainStatus():
 
 def status_getIdcMapData():
     """
-    getIdcMapStatus，获取机房地图数据接口
+    getIdcMapStatus
     """
     global logger
     condition = {
         "conditionList": [
             {
                 "monitoringObjectType": "idc",
-                "monitoringObjectValue": "NJ02UN",
+                "monitoringObjectValue": "xx",
                 "source": "GXT",
                 "metric": "checkPv",
                 "ifOnlyServed": False,
@@ -759,7 +759,7 @@ def status_getIdcMapData():
             handle_result(argus_item, 1)
             return
 
-        # 电信连通性数据
+        # 
         isp_data = data['data'][0]
 
         if isp_data is None:
@@ -779,7 +779,7 @@ def status_getIdcMapData():
         provinces_data = list(set(provinces_data))
 
         cnt = len(provinces_data)
-        # 如果地图所有省份数据都为空
+        # 
         if cnt <= 1 and provinces_data[0] == "-":
             handle_result(argus_item, 1)
             return
@@ -794,7 +794,7 @@ def status_getIdcMapData():
 
 def status_getData(url):
     """
-    getIdcMapStatus，获取机房地图数据接口
+    getIdcMapStatus
     """
     global logger
     condition = {
@@ -851,8 +851,7 @@ def status_getData(url):
 
 
 def load_urls(aggrNamesFile):
-    # http://group.bcm-tsdb-query.docker.all.serv:20041/v1/products/006da024b95346209af84da43d824233/namespaces/lHyvNlxhEodCFXwKWyVnaohasKRgHdB___bj.BCM_SITE.006da024b95346209af84da43d824233/metrics/site.bcm.success/_data
-    url = 'http://group.bcm-tsdb-query.docker.all.serv:20041/v1/products/%s/namespaces/%s/metrics/site.bcm.success/_data'
+    url = 'xxx'
     with open(aggrNamesFile, 'r') as f:
         for line in f:
 
