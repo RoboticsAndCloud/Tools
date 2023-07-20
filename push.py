@@ -11,8 +11,8 @@ import datetime
 import time
 
 '''
-    验证argus-relay账号是否有falcon.noah.all服务单元的监控读权限，覆盖olive
-    http://localhost:8557/falcon/access/check?username=argus-relay&type=r&service_list\[\]=falcon.docker.all
+    
+    http://localhost:8557/falcon/access/check?username=argus-relay&type=r&service_list\[\]=falcon.xx.all
 
     {
     data: true
@@ -72,7 +72,7 @@ service_list\[\]=%s"' % (username, service_list)
 
     print postData
 
-    cmd='curl -X POST -H "Content-type: application/json" "http://szth-y02-for-private-cloud-test101.szth.xx.com:8800/v1/_data" -v -d ' + "'" + postData + "'"
+    cmd='curl -X POST -H "Content-type: application/json" "http://xx.com:8800/v1/_data" -v -d ' + "'" + postData + "'"
     print cmd 
 
     try:
@@ -106,6 +106,6 @@ if __name__ == '__main__':
     init_log(log_file)
 
     username = 'argus-relay'
-    service_list = 'falcon.docker.all'
+    service_list = 'falcon.xx.all'
 
     check_user_auth()
